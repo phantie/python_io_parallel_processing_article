@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "io-processing"
+version = "0.1.0"
+description = "My poetry creates pyproject.toml of old format for some reason. It's a package I copy-paste to create new packages"
+authors = ["Alexander Tokar"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+asyncio = "^3.4.3"
+pydantic = "^2.11.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
