@@ -381,3 +381,5 @@ Chapter TODO
     - What if the process crashes?
     - What if the process restarts?
     - Observability/alerting/logging?
+
+## Code repostory [Github](https://github.com/phantie/python_io_parallel_processing_article)
