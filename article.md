@@ -378,3 +378,14 @@ async def main():
     # as a result we've handled common problems with event processing
     # and protected the consumers from dying/being stuck
 ```
+
+
+### Auto adjust consumer number based on service availability/quotas 
+
+Chapter TODO
+
+## Further questions you might ask after implementing something like this:
+
+    - What if the process crashes?
+    - What if the process restarts?
+    - Observability/alterting/logging?
