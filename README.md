@@ -79,7 +79,7 @@ async def normal_task(
     return None
 ```
 
-The default behavior of a task is to simulate work by sleeping. Since it's customizable, it would allow generating many atypical scenarios.
+The default behavior of a task is to simulate work by sleeping.
 
 ## Let's solve problems
 
