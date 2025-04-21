@@ -319,8 +319,6 @@ async def producer_of_unusual_tasks(task_queue: asyncio.Queue) -> None:
 
 async def consumer_of_unusual_tasks(task_queue: asyncio.Queue):
     # The goal is to not let this consumer (worker) die or get stuck for too long
-    #
-    # For the unusually_long_to_execute_task, you
 
     while True:
         task = await task_queue.get()
