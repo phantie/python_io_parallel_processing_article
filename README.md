@@ -138,9 +138,11 @@ async def main():
 
 There are several problems if we take the previous approach with *asyncio.gather*:
 
-    - I/O bound tasks almost always involve side effects - practically it would try to perform a DDOS attack on the services you interact with
-    - A million coroutines is memory-demanding
-    - Due to task switching of the asyncio runtime, performance diminishes linearly relative to the number of simultaneously running coroutines
+```txt
+- I/O bound tasks almost always involve side effects - practically it would try to perform a DDOS attack on the services you interact with
+- A million coroutines is memory-demanding
+- Due to task switching of the asyncio runtime, performance diminishes linearly relative to the number of simultaneously running coroutines
+```
 
 So there are problems to solve:
 ```txt
