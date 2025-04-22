@@ -197,8 +197,22 @@ async def consumer_of_normal_tasks(task_queue: asyncio.Queue):
         await task
         # Specify that the task is done, so another consumer does not get it
         task_queue.task_done()
+```
 
+> **Important:** In a JoinableQueue (or asyncio’s Queue when used with task_done/join semantics), each put() increments an internal “unfinished tasks” counter, and each task_done() decrements it. If an item is get()’d but never has task_done() called for it, then:
+>
+> 1. The unfinished tasks counter remains stuck at a higher value than it should.  
+> 2. Any code awaiting queue.join() (which waits for the unfinished tasks counter to go back down to 0) will block indefinitely.  
+>
+> So effectively, the queue remains under the impression that one or more tasks are still being processed. Without the matching task_done() call, the “I’m finished with this item” signal is never given, leading to a permanent or long-lasting block on join.
 
+```txt
+So:
+- a asyncio.Queue is not for every use case
+- for a get()'d task from a queue you *must* call asyncio.Queue.task_done
+```
+
+```python
 async def main():
     with timer():
         # Let's process 1_000 tasks with this approach (1_000_000 is too long to wait)
